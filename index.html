@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#13233F">
+<title>Dr.Sedeeq (OMR)</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Dr.Sedeeq OMR">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="splash" class="busy" style="background:#13233F;color:#C9A23A"><img src="img/logo-h.png" alt="Dr.Sedeeq (OMR)" style="width:78%;max-width:340px;height:auto"><div>مصحح الأوراق الامتحانية</div></div>
+
+<div id="app" class="hidden">
+  <header class="top">
+    <button class="back hidden" id="backBtn" aria-label="رجوع">&#8594;</button>
+    <img class="hlogo" id="mono" src="img/logo-h.png" alt="Dr.Sedeeq (OMR)">
+    <h1 id="title"></h1>
+    <span class="trial-chip hidden" id="trialChip"></span>
+  </header>
+  <main id="main"></main>
+  <nav class="tabs" id="tabs">
+    <button data-tab="exams"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z M14 3v5h5 M10 13h6 M10 17h6"/></svg>الامتحانات</button>
+    <button data-tab="classes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.4 2.8-5.2 5.5-5.2s4.9 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14.6c2.4.1 4.3 1.6 4.9 4.6"/></svg>الطلبة</button>
+    <button data-tab="subjects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0z M12 5.5c2.5-1.5 5.5-1.5 8 0v14c-2.5-1.5-5.5-1.5-8 0z"/></svg>المواد</button>
+    <button data-tab="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"/></svg>الإعدادات</button>
+  </nav>
+</div>
+<div id="lock" class="lock hidden"></div>
+
+<script src="js/lib/jspdf.umd.min.js"></script>
+<script src="js/lib/xlsx.full.min.js"></script>
+<script src="js/cap.js"></script>
+<script src="js/config.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/omr.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/speech.js"></script>
+<script src="js/word.js"></script>
+<script src="js/grading.js"></script>
+<script src="js/sheet.js"></script>
+<script src="js/db.js"></script>
+<script src="js/license.js"></script>
+<script src="js/export.js"></script>
+<script src="js/app.js"></script>
+<script>
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(function () {});
+if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function () {});
+(function () {  /* تنبيه التثبيت: يظهر عند الفتح في Safari فقط وليس بعد التثبيت */
+  var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (!ios || navigator.standalone) return;
+  var d = document.createElement('div');
+  d.style.cssText = 'position:fixed;left:10px;right:10px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:70;background:#13233F;color:#fff;border:1px solid #C9A23A;border-radius:14px;padding:12px 14px;font-size:14.5px;line-height:1.8;box-shadow:0 6px 20px rgba(0,0,0,.3)';
+  d.innerHTML = '<b style="color:#C9A23A">ثبّت التطبيق على الآيفون</b><br>اضغط زر المشاركة (مربع وسهم للأعلى) في Safari ثم اختر «إضافة إلى الشاشة الرئيسية» — بعدها افتح التطبيق من أيقونته<button style="position:absolute;top:6px;left:10px;background:none;border:0;color:#fff;font-size:18px">✕</button>';
+  d.querySelector('button').onclick = function () { d.remove(); };
+  document.body.appendChild(d);
+})();
+</script>
+</body>
+</html>
